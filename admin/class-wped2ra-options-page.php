@@ -1,8 +1,9 @@
 <?php
 
-if ( !defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ):
 	exit;
-}
+endif;
+
 if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 
 	class WPExtendedDataToRestAPI_Options_Page {
@@ -50,13 +51,13 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 			echo '<form method="post" action="options.php">';
 			settings_fields( 'wpedtra-options-group' );
 
-			foreach ( get_post_types( array( 'public' => true, 'show_in_nav_menus' => true ), 'names' ) as $pt ) {
+			foreach ( get_post_types( array( 'public' => true, 'show_in_nav_menus' => true ), 'names' ) as $pt ):
 				echo '<div><b>' . $pt . '</b></div><hr>';
 				echo '<select name="wpedtra-pt-' . $pt . '" id="wpedtra-pt-' . $pt . '">';
 				echo '<option value="no" ' . (selected( get_option( 'wpedtra-pt-' . $pt ), 'no' )) . '>no</option>';
 				echo '<option value="yes" ' . (selected( get_option( 'wpedtra-pt-' . $pt ), "yes" )) . '>yes</option>';
 				echo '</select><br><br>';
-			}
+			endforeach;
 			echo '<input type="submit" class="button-primary" id="submit" name="submit" value="' . __( 'Save Changes' ) . '" />';
 
 			echo '</form>';
