@@ -1,8 +1,8 @@
 <?php
 
-if ( !defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ):
 	exit;
-}
+endif;
 if ( !class_exists( 'WPExtendedDataToRestAPI_Register_Rest_Fields' ) ):
 
 	class WPExtendedDataToRestAPI_Register_Rest_Fields {
