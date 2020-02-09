@@ -17,9 +17,7 @@
 if ( !defined( 'ABSPATH' ) ):
 	exit;
 endif;
-
-
-
+	define('WPEDTRA_BASE_DIRECTORY', plugin_basename( __FILE__ ));
 
 if ( is_admin() ):
 	require_once dirname( __FILE__ ) . '/admin/class-wped2ra-options-page.php';
