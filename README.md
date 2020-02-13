@@ -10,6 +10,11 @@
  * Text Domain: wp-extended-data-to-rest-api
 
 
+
+
+******************
+
+
 This plugin adds other details to the information present in the posts exposed by the wordpress REST API.
 
 For example:
