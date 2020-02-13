@@ -20,5 +20,5 @@ This plugin adds other details to the information present in the posts exposed b
 For example:
 
 - terms and taxonomy
-- half
+- meta
 - connections between posts (wp-posts-to-posts)
