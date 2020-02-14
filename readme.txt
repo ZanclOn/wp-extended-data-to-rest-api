@@ -1,6 +1,6 @@
 === WP Extended Data to REST API ===
 Contributors:
-Donate link: 
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UHTHLRBY2ZARS&currency_code=EUR&source=url
 Tags: rest, api
 Requires at least: 5.2
 Tested up to: 5.3.2
