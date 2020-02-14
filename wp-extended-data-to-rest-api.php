@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Extended Data to REST API
+ * Plugin Name: WP Extended Data to REST API
  * Description: Exposes Extended Data (meta, terms, p2p, ...) in the WordPress REST API
  * Version: 1.0.3
  * Requires at least: 5.2

@@ -1,4 +1,4 @@
-=== Extended Data to REST API ===
+=== WP Extended Data to REST API ===
 Contributors:
 Donate link: 
 Tags: rest, api
