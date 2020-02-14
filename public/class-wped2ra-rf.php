@@ -12,8 +12,6 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Register_Rest_Fields' ) ):
 			add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
 		}
 
-
-
 		function rest_api_init() {
 
 			$post_types = get_post_types();
@@ -45,6 +43,24 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Register_Rest_Fields' ) ):
 							} ) );
 					endif;
 
+					if ( get_option( 'wpedtra-children_ids', 'no' ) === 'yes' ):
+						register_rest_field( $pt, "children_ids", array( "get_callback" => function ($post) use($pt) {
+								$args = array(
+									'post_parent' => $post['id'],
+									'post_type' => $pt,
+									'numberposts' => -1,
+									'post_status' => 'publish',
+									'fields' => 'ids'
+								);
+
+								$children = get_children( $args, ARRAY_N );
+
+
+								return $children;
+							} ) );
+					endif;
+
+
 					if ( get_option( 'wpedtra-p2p', 'no' ) === 'yes' ):
 						if ( function_exists( '_p2p_load' ) ):
 
@@ -52,19 +68,21 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Register_Rest_Fields' ) ):
 							if ( !empty( $wpdb->p2p ) && !empty( $wpdb->p2pmeta ) ) :
 								register_rest_field( $pt, "p2p", array( "get_callback" => function ($post) {
 										global $wpdb;
-										$p2p_to = $wpdb->get_results( $wpdb->prepare( "SELECT p2p_id, p2p_from , p2p_to  FROM {$wpdb->p2p} WHERE p2p_to = %d ", array( $post['id'] ) ), OBJECT );
+										$p2p_to = $wpdb->get_results( $wpdb->prepare( "SELECT p2p_id, p2p_from , p2p_to, p2p_type  FROM {$wpdb->p2p} WHERE p2p_to = %d ", array( $post['id'] ) ), OBJECT );
 										foreach ( $p2p_to as $k => $v ):
 											$p = get_post( $v->p2p_from );
-											$p2p_to[$k]->title = $p->post_title;
+											$p2p_to[$k]->p2p_type = $v->p2p_type;
+											$p2p_to[$k]->post_title = $p->post_title;
 											$p2p_meta_to = $wpdb->get_results( $wpdb->prepare( "SELECT meta_value, meta_key  FROM {$wpdb->p2pmeta} WHERE  p2p_id=%d", array( $v->p2p_id ) ), OBJECT );
 											foreach ( $p2p_meta_to as $k_meta => $v_meta ):
 												$p2p_to[$k]->$k_meta = $v_meta;
 											endforeach;
 										endforeach;
-										$p2p_from = $wpdb->get_results( $wpdb->prepare( "SELECT p2p_id, p2p_from , p2p_to  FROM {$wpdb->p2p} WHERE p2p_from = %d ", array( $post['id'] ) ), OBJECT );
+										$p2p_from = $wpdb->get_results( $wpdb->prepare( "SELECT p2p_id, p2p_from , p2p_to, p2p_type  FROM {$wpdb->p2p} WHERE p2p_from = %d ", array( $post['id'] ) ), OBJECT );
 										foreach ( $p2p_from as $k => $v ):
 											$p = get_post( $v->p2p_to );
-											$p2p_from[$k]->title = $p->post_title;
+											$p2p_from[$k]->p2p_type = $v->p2p_type;
+											$p2p_from[$k]->post_title = $p->post_title;
 											$p2p_meta_to = $wpdb->get_results( $wpdb->prepare( "SELECT meta_value, meta_key  FROM {$wpdb->p2pmeta} WHERE  p2p_id=%d", array( $v->p2p_id ) ), OBJECT );
 											foreach ( $p2p_meta_to as $k_meta => $v_meta ):
 												$p2p_from[$k]->$k_meta = $v_meta;
@@ -72,8 +90,8 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Register_Rest_Fields' ) ):
 										endforeach;
 
 										$p2p = array();
-										$p2p['p2p_to'] = $p2p_to;
-										$p2p['p2p_from'] = $p2p_from;
+										$p2p['to'] = $p2p_to;
+										$p2p['from'] = $p2p_from;
 
 										return $p2p;
 									} ) );
@@ -86,6 +104,12 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Register_Rest_Fields' ) ):
 		}
 
 	}
+
+	
+
+	
+
+	
 
 	
 

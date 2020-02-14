@@ -41,6 +41,8 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 			add_option( 'wpedtra-p2p', 'no' );
 			register_setting( 'wpedtra-options-group', 'wpedtra-p2p' );
 
+			add_option( 'wpedtra-children_ids', 'no' );
+			register_setting( 'wpedtra-options-group', 'wpedtra-children_ids' );
 
 			foreach ( get_post_types( array( 'public' => true, 'show_in_nav_menus' => true ), 'names' ) as $pt ) {
 				add_option( 'wpedtra-pt-' . $pt, 'no' );
@@ -69,6 +71,12 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 			echo '<option value="yes" ' . (selected( get_option( 'wpedtra-terms' ), "yes" )) . '>yes</option>';
 			echo '</select><br><br>';
 
+			echo '<label for="wpedtra-children_ids">children ids</label>:&nbsp;';
+			echo '<select name="wpedtra-children_ids" id="wpedtra-children_ids">';
+			echo '<option value="no" ' . (selected( get_option( 'wpedtra-children_ids' ), 'no' )) . '>no</option>';
+			echo '<option value="yes" ' . (selected( get_option( 'wpedtra-children_ids' ), "yes" )) . '>yes</option>';
+			echo '</select><br><br>';			
+			
 			echo '<label for="wpedtra-p2p">post to post</label>:&nbsp;';
 			echo '<select name="wpedtra-p2p" id="wpedtra-p2p">';
 			echo '<option value="no" ' . (selected( get_option( 'wpedtra-p2p' ), 'no' )) . '>no</option>';
@@ -76,6 +84,9 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 			echo '</select><br><br>';
 
 
+			
+			
+			
 			echo '<h3>' . __( 'for which post type?' ) . '</h3>';
 			settings_fields( 'wpedtra-options-group' );
 
@@ -94,6 +105,8 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 		}
 
 	}
+
+	
 
 	
 
