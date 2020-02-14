@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Extended Data to REST API
  * Description: Exposes Extended Data (meta, terms, p2p, ...) in the WordPress REST API
- * Version: 1.0.2
+ * Version: 1.0.3
  * Requires at least: 5.2
  * Requires PHP:      5.6
  * Author: ZanclOn
@@ -13,11 +13,10 @@
  * Plugin URI: https://github.com/ZanclOn/wp-extended-data-to-rest-api
  * Text Domain: wp-extended-data-to-rest-api
  */
-
 if ( !defined( 'ABSPATH' ) ):
 	exit;
 endif;
-	define('WPEDTRA_BASE_DIRECTORY', plugin_basename( __FILE__ ));
+define( 'WPEDTRA_BASE_DIRECTORY', plugin_basename( __FILE__ ) );
 
 if ( is_admin() ):
 	require_once dirname( __FILE__ ) . '/admin/class-wped2ra-options-page.php';

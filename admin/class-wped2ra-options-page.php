@@ -52,7 +52,7 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 
 			echo '<div class="wrap">';
 			echo '<h1>' . __( 'Extended Data to REST API Configuration' ) . '</h1>';
-			
+
 			echo '<form method="post" action="options.php">';
 
 			echo '<h3>' . __( 'type of data' ) . '</h3>';
@@ -89,39 +89,11 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 			echo '<input type="submit" class="button-primary" id="submit" name="submit" value="' . __( 'Save Changes' ) . '" />';
 
 			echo '</form>';
-			//position:fixed;z-index:10;right:40px;top:40px
-			echo '<br>';
-			echo '<div class="update-nag" style="text-align:center;background-color:white;padding:10px">';
-			echo '<img style="border-radius:50%;width:80px;height:80px;" src="https://www.gravatar.com/avatar/681f5b75ede932d4cce029fea83ac8d7?s=80&d=mp&r=g">';
-			echo '<br>';
-			echo '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_donations" /><input type="hidden" name="business" value="UHTHLRBY2ZARS" /><input type="hidden" name="currency_code" value="EUR" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" /><img alt="" border="0" src="https://www.paypal.com/en_IT/i/scr/pixel.gif" width="1" height="1" /></form>';
-			echo '<!hr>';			
-			echo '</div>';	
-			
-			
+
 			echo '</div>';
 		}
 
 	}
-	
-	
-
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 
 	
 
