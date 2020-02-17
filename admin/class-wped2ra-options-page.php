@@ -23,7 +23,7 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 
 		function admin_menu() {
 			add_options_page(
-					__( 'Extended Data to REST API', 'wp-extended-data-to-rest-api' ), __( 'Extended Data to REST API', 'wp-extended-data-to-rest-api' ), 'manage_options', 'wp-extended-data-to-rest-api', array(
+					__( 'WP Extended Data to REST API', 'wp-extended-data-to-rest-api' ), __( 'WP Extended Data to REST API', 'wp-extended-data-to-rest-api' ), 'manage_options', 'wp-extended-data-to-rest-api', array(
 				$this,
 				'settings_page'
 					)
@@ -53,7 +53,7 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 		function settings_page() {
 
 			echo '<div class="wrap">';
-			echo '<h1>' . __( 'Extended Data to REST API Configuration' ) . '</h1>';
+			echo '<h1>' . __( 'WP Extended Data to REST API Configuration' ) . '</h1>';
 
 			echo '<form method="post" action="options.php">';
 
@@ -71,7 +71,7 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Options_Page' ) ):
 			echo '<option value="yes" ' . (selected( get_option( 'wpedtra-terms' ), "yes" )) . '>yes</option>';
 			echo '</select><br><br>';
 
-			echo '<label for="wpedtra-children_ids">children ids</label>:&nbsp;';
+			echo '<label for="wpedtra-children_ids">children ids (max 100 items)</label>:&nbsp;';
 			echo '<select name="wpedtra-children_ids" id="wpedtra-children_ids">';
 			echo '<option value="no" ' . (selected( get_option( 'wpedtra-children_ids' ), 'no' )) . '>no</option>';
 			echo '<option value="yes" ' . (selected( get_option( 'wpedtra-children_ids' ), "yes" )) . '>yes</option>';

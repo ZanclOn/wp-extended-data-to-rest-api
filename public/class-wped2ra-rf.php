@@ -48,7 +48,7 @@ if ( !class_exists( 'WPExtendedDataToRestAPI_Register_Rest_Fields' ) ):
 								$args = array(
 									'post_parent' => $post['id'],
 									'post_type' => $pt,
-									'numberposts' => -1,
+									'numberposts' => 100,
 									'post_status' => 'publish',
 									'fields' => 'ids'
 								);
